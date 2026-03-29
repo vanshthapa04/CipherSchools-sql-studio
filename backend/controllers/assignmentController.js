@@ -6,7 +6,7 @@ export const getAssignments = async (req, res) => {
     res.json(result.rows);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to fetch assignments" });
+    res.status(500).json({ error: error.message });
   }
 };
 
