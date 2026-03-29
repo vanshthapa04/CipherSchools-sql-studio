@@ -7,12 +7,8 @@ const { Pool } = pkg;
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
   ssl: {
-    rejectUnauthorized: false
-  }
+    rejectUnauthorized: false,
+  },
 });
-
-pool.connect()
-  .then(() => console.log("PostgreSQL Connected"))
-  .catch(err => console.error("PostgreSQL connection error:", err));
 
 export default pool;
