@@ -1,32 +1,14 @@
 import { useState } from "react";
-import api from "../api";
 
-function HintBox({ question }) {
-
+function HintBox() {
   const [hint, setHint] = useState("");
 
-  const getHint = async () => {
-
-    try {
-
-      const res = await api.post("/hint", {
-        question: question
-      });
-
-      setHint(res.data.hint);
-
-    } catch (error) {
-
-      console.error(error);
-      alert("Failed to get hint");
-
-    }
-
+  const getHint = () => {
+    setHint("Try using SELECT * FROM users;");
   };
 
   return (
     <div>
-
       <button
         onClick={getHint}
         className="px-4 py-2 bg-green-600 text-white rounded"
@@ -35,11 +17,10 @@ function HintBox({ question }) {
       </button>
 
       {hint && (
-        <div className="mt-3 p-3 border rounded bg-gray-900 text-gray-200 border-gray-700">
+        <div className="mt-3 p-3 border rounded bg-gray-100">
           {hint}
         </div>
       )}
-
     </div>
   );
 }

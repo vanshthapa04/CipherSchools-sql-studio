@@ -1,52 +1,38 @@
 function ResultTable({ data }) {
 
-  if (!data || data.length === 0) {
+    if (!data || data.length === 0) {
+      return <p>No results yet</p>;
+    }
+  
+    const columns = Object.keys(data[0]);
+  
     return (
-      <p className="text-gray-400">
-        No results yet
-      </p>
-    );
-  }
-
-  const columns = Object.keys(data[0]);
-
-  return (
-    <div className="overflow-x-auto">
-
-      <table className="w-full border border-gray-700 text-left">
-
-        <thead className="bg-gray-800">
+      <table className="w-full border mt-4">
+  
+        <thead>
           <tr>
             {columns.map((col) => (
-              <th
-                key={col}
-                className="border border-gray-700 px-4 py-2"
-              >
+              <th key={col} className="border px-2 py-1">
                 {col}
               </th>
             ))}
           </tr>
         </thead>
-
+  
         <tbody>
           {data.map((row, i) => (
-            <tr key={i} className="hover:bg-gray-900">
+            <tr key={i}>
               {columns.map((col) => (
-                <td
-                  key={col}
-                  className="border border-gray-700 px-4 py-2"
-                >
+                <td key={col} className="border px-2 py-1">
                   {row[col]}
                 </td>
               ))}
             </tr>
           ))}
         </tbody>
-
+  
       </table>
-
-    </div>
-  );
-}
-
-export default ResultTable;
+    );
+  }
+  
+  export default ResultTable;

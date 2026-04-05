@@ -25,9 +25,9 @@ function SqlEditor({ setResults }) {
       <h2 className="text-xl font-semibold mb-2">SQL Editor</h2>
 
       <Editor
-        height="300px"
-        defaultLanguage="sql"
-        defaultValue={query}
+        height="250px"
+        language="sql"
+        value={query}
         onChange={(value) => setQuery(value)}
       />
 
